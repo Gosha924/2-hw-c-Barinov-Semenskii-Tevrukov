@@ -8,7 +8,7 @@ typedef struct node {
     struct node* right;
 } Node;
 
-typedef struct bst{
+typedef struct bst {
     Node* root;
     int size;
 } BST;
