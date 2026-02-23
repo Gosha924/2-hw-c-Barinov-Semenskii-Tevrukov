@@ -1,7 +1,7 @@
 #include "taskb.h"
 #include <stdio.h>
 #include <stdlib.h>
- 
+
 BST* createBST()
 {
     BST* tree = (BST*)malloc(sizeof(BST));
@@ -11,7 +11,8 @@ BST* createBST()
     }
     return tree;
 }
-Node* createNode(int key) {
+Node* createNode(int key)
+{
     Node* newNode = (Node*)malloc(sizeof(Node));
     if (newNode) {
         newNode->key = key;
@@ -20,7 +21,8 @@ Node* createNode(int key) {
     }
     return newNode;
 }
-void inorderRecursive(Node* root) {
+void inorderRecursive(Node* root)
+{
     if (root == NULL) {
         return;
     }
@@ -29,19 +31,57 @@ void inorderRecursive(Node* root) {
     inorderRecursive(root->right);
 }
 
-void bstInorder(BST* tree) {
+void bstInorder(BST* tree)
+{
     if (tree == NULL || tree->root == NULL) {
-        printf("Дерево пусто\n");
+        printf("Tree is empty\n");
         return;
     }
-
-    printf("Inorder обход: ");
+    printf("Inorder \n");
     inorderRecursive(tree->root);
     printf("\n");
 }
 
-int main() {
-    BST* tree = createBST();
-    
+void preorderRecursive(Node* root)
+{
+    if (root == NULL) {
+        return;
+    }
+    printf("%d ", root->key);
+    preorderRecursive(root->left);
+    preorderRecursive(root->right);
+}
+
+void bstPreorder(BST* tree)
+{
+    if (tree == NULL || tree->root == NULL) {
+        printf("Tree is empty\n");
+    }
+    printf("Preorder\n");
+    preorderRecursive(tree->root);
+    printf("/n");
+}
+
+void postorderRecursive(Node* root)
+{
+    if (root == NULL) {
+        return;
+    }
+    postorderRecursive(root->left);
+    postorderRecursive(root->right);
+    printf("%d ", root->key);
+}
+
+void bstPostorder(BST* tree)
+{
+    if (tree == NULL || tree->root == NULL) {
+        printf("Tree is empty\n");
+    }
+    printf("Postorder\n");
+    postorderRecursive(tree->root);
+}
+
+int main()
+{
     return 0;
 }
