@@ -14,3 +14,8 @@ bool bstContains(BST* tree, int value)
 void bstFree(BST* tree)
 {
 }
+
+int main(void)
+{
+    printf("test");
+}
