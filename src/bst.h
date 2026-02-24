@@ -3,8 +3,8 @@
 
 typedef struct Node {
     int key;
-    struct node* left;
-    struct node* right;
+    struct Node* left;
+    struct Node* right;
 } Node;
 
 typedef struct BST {
