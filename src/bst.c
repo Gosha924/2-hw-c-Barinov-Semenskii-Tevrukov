@@ -44,9 +44,13 @@ void bstInsert(BST* tree, int value)
 }
 bool bstContains(BST* tree, int value)
 {
+    if (tree == NULL) {
+        return 0;
+    }
     if (tree->root == NULL) {
         return 0;
     }
+
     Node* node = tree->root;
     while (node != NULL) {
         if (node->key == value) {
@@ -79,7 +83,7 @@ void bstFree(BST* tree)
     free(tree);
 }
 
-// task B
+// task Bф
 
 BST* createBST()
 {
