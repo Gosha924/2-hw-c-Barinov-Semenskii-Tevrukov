@@ -2,25 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct node {
-    int key;
-    struct node* left;
-    struct node* right;
-
-} Node;
-
-typedef struct bst {
-    Node* root;
-    int size;
-} BST;
-
-BST* bstCreate(void)
-{
-    BST* tree = malloc(sizeof(BST));
-    tree->root = NULL;
-    tree->size = 0;
-    return tree;
-}
+//task A
 
 void bstInsert(BST* tree, int value)
 {
@@ -90,7 +72,14 @@ void freeNode(Node* node)
 
 void bstFree(BST* tree)
 {
+    if (tree == NULL) {
+        return;
+    }
+    freeNode(tree->root);
+    free(tree);
 }
+
+//task B
 
 BST* createBST()
 {
@@ -158,7 +147,7 @@ void bstPreorder(BST* tree)
     }
     printf("Preorder\n");
     preorderRecursive(tree->root);
-    printf("/n");
+    printf("\n");
 }
 
 void postorderRecursive(Node* root)

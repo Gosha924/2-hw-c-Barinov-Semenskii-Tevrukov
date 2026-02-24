@@ -13,10 +13,10 @@ typedef struct BST {
 } BST;
 
 // задача A
-/*void bstInsert(BST* tree, int value);
+void bstInsert(BST* tree, int value);
 bool bstContains(BST* tree, int value);
 void bstFree(BST* tree);
-*/
+
 
 // задача B
 BST* createBST(void);
