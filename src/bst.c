@@ -46,9 +46,11 @@ void inorderRecursive(Node* root)
 
 void bstInorder(BST* tree)
 {
-    if (tree == NULL || tree->root == NULL) {
+    if (tree == NULL) {
         printf("Tree is empty\n");
-        return;
+    }
+    if (tree->root == NULL) {
+        printf("Tree is empty\n");
     }
     printf("Inorder \n");
     inorderRecursive(tree->root);
@@ -67,7 +69,10 @@ void preorderRecursive(Node* root)
 
 void bstPreorder(BST* tree)
 {
-    if (tree == NULL || tree->root == NULL) {
+    if (tree == NULL) {
+        printf("Tree is empty\n");
+    }
+    if (tree->root == NULL) {
         printf("Tree is empty\n");
     }
     printf("Preorder\n");
@@ -87,7 +92,10 @@ void postorderRecursive(Node* root)
 
 void bstPostorder(BST* tree)
 {
-    if (tree == NULL || tree->root == NULL) {
+    if (tree == NULL) {
+        printf("Tree is empty\n");
+    }
+    if (tree->root == NULL) {
         printf("Tree is empty\n");
     }
     printf("Postorder\n");
