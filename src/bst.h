@@ -1,13 +1,13 @@
 #pragma once
 #include <stdbool.h>
 
-typedef struct node {
+typedef struct Node {
     int key;
     struct node* left;
     struct node* right;
 } Node;
 
-typedef struct bst {
+typedef struct BST {
     Node* root;
     int size;
 } BST;
