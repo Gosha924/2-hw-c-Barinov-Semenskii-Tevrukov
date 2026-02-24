@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//task A
+// task A
 
 void bstInsert(BST* tree, int value)
 {
@@ -79,7 +79,7 @@ void bstFree(BST* tree)
     free(tree);
 }
 
-//task B
+// task B
 
 BST* createBST()
 {

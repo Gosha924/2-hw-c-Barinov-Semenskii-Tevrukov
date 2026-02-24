@@ -17,7 +17,6 @@ void bstInsert(BST* tree, int value);
 bool bstContains(BST* tree, int value);
 void bstFree(BST* tree);
 
-
 // задача B
 BST* createBST(void);
 Node* createNode(int key);
