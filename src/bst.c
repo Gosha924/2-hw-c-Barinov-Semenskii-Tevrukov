@@ -178,7 +178,7 @@ void bstPostorder(BST* tree)
     postorderRecursive(tree->root);
 }
 // task F
- 
+
 bool check(Node* root, Node** prev)
 {
     if (root == NULL) {
