@@ -83,7 +83,7 @@ void bstFree(BST* tree)
     free(tree);
 }
 
-// task Bф
+// task B
 
 BST* createBST()
 {
@@ -182,13 +182,13 @@ void bstPostorder(BST* tree)
 bool check(Node* root, Node** prev)
 {
     if (root == NULL) {
+        return true;
+    }
+    if (!(check(root->left, prev))) {
         return false;
     }
-    if (check(root->left, prev) == NULL) {
-        return true;
-    }
-    if (*prev != NULL && root->key < (*prev)->key) {
-        return true;
+    if (*prev != NULL && root->key <= (*prev)->key) {
+        return false;
     }
     *prev = root;
     return check(root->right, prev);
@@ -197,15 +197,8 @@ bool check(Node* root, Node** prev)
 bool bstIsValid(BST* tree)
 {
     if (tree == NULL || tree->root == NULL) {
-        return false;
+        return true;
     }
     Node* prev = NULL;
     return check(tree->root, &prev);
-}
-
-int main()
-{
-    BST* test = createBST();
-    
-    return 0;
 }
