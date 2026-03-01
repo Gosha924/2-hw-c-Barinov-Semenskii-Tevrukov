@@ -3,17 +3,10 @@
 
 int main()
 {
-    BST* tree = bstCreate();
+    BST* tree = createBST();
 
-    bstInsert(tree, 5);
-    bstInsert(tree, 3);
-    bstInsert(tree, 7);
-
-    printf("%d ", bstContains(tree, 5));
-    printf("%d ", bstContains(tree, 3));
-    printf("%d ", bstContains(tree, 7));
-    printf("%d\n", bstContains(tree, 9));
-
+    bool isValud = bstIsValid(tree);
+    printf("%d\n", isValud);
     bstFree(tree);
 
     return 0;

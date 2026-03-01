@@ -34,3 +34,7 @@ int bstMin(BST* tree);
 int bstMax(BST* tree);
 */
 //.....
+
+// Задача F
+bool check(Node* root, Node** prev);
+bool bstIsValid(BST* tree);
