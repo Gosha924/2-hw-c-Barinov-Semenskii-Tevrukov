@@ -177,8 +177,35 @@ void bstPostorder(BST* tree)
     printf("Postorder\n");
     postorderRecursive(tree->root);
 }
+// task F
+ 
+bool check(Node* root, Node** prev)
+{
+    if (root == NULL) {
+        return false;
+    }
+    if (check(root->left, prev) == NULL) {
+        return true;
+    }
+    if (*prev != NULL && root->key < (*prev)->key) {
+        return true;
+    }
+    *prev = root;
+    return check(root->right, prev);
+}
+
+bool bstIsValid(BST* tree)
+{
+    if (tree == NULL || tree->root == NULL) {
+        return false;
+    }
+    Node* prev = NULL;
+    return check(tree->root, &prev);
+}
 
 int main()
 {
+    BST* test = createBST();
+    
     return 0;
 }
