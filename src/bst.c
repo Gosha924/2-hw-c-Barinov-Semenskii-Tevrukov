@@ -186,71 +186,67 @@ void bstDelete(BST* tree, int value)
     }
 
     Node* current = tree->root;
-    Node* pref = NULL;
-    bool flag = false;
+    Node* parent = NULL;
+    bool found = false;
 
     while (current != NULL) {
         if (value < current->key) {
-            pref = current;
+            parent = current;
             current = current->left;
         } else if (value > current->key) {
-            pref = current;
+            parent = current;
             current = current->right;
         } else {
-            flag = true;
+            found = true;
             break;
         }
     }
 
-    if (!flag) {
+    if (!found) {
         printf("Value not found\n");
         return;
     }
 
     if (current->left == NULL && current->right == NULL) {
-        if (pref == NULL) {
+        if (parent == NULL) {
             tree->root = NULL;
-        } else if (pref->left == current) {
-            pref->left = NULL;
+        } else if (parent->left == current) {
+            parent->left = NULL;
         } else {
-            pref->right = NULL;
+            parent->right = NULL;
         }
         free(current);
         tree->size--;
     } else if (current->left == NULL || current->right == NULL) {
-        Node* child;
-        if (current->left != NULL) {
-            child = current->left;
-        } else {
-            child = current->right;
-        }
+        Node* child = (current->left != NULL) ? current->left : current->right;
 
-        if (pref == NULL) {
+        if (parent == NULL) {
             tree->root = child;
-        } else if (pref->left == current) {
-            pref->left = child;
+        } else if (parent->left == current) {
+            parent->left = child;
         } else {
-            pref->right = child;
+            parent->right = child;
         }
         free(current);
         tree->size--;
     } else {
-        Node* pref_search = NULL;
-        Node* current_search = current->right;
+        Node* successorParent = NULL;
+        Node* successor = current->right;
 
-        while (current_search->left != NULL) {
-            pref_search = current_search;
-            current_search = current_search->left;
+        while (successor->left != NULL) {
+            successorParent = successor;
+            successor = successor->left;
         }
 
-        current->key = current_search->key;
+        current->key = successor->key;
 
-        if (pref_search == NULL) {
-            current->right = current_search->right;
+        if (successorParent == NULL) {
+            current->right = successor->right;
         } else {
-            pref_search->left = current_search->right;
+            successorParent->left = successor->right;
         }
-        free(current_search);
+
+        free(successor);
         tree->size--;
     }
 }
