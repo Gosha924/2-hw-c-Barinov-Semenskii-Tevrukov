@@ -254,3 +254,8 @@ void bstDelete(BST* tree, int value)
         tree->size--;
     }
 }
+
+int main()
+{
+    return 0;
+}
