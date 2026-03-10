@@ -22,25 +22,25 @@ void stackPop(stack* Top)
 {
     stack* elem = Top->next;
     if (elem != NULL) {
-	    Top->next = elem->next;
-	    free(elem);
+        Top->next = elem->next;
+        free(elem);
     }
 }
 
 Node* stackTop(stack* Top)
 {
-    if (Top->next != NULL)
-	    return Top->next->node;
+    if (Top->next != NULL) {
+        return Top->next->node;
+    }
     return NULL;
 }
-
 
 void stackFree(stack* Top)
 {
     while (Top->next != NULL) {
-	    stack* elem = Top->next;
-	    Top->next = elem->next;
-	    free(elem);
+        stack* elem = Top->next;
+        Top->next = elem->next;
+        free(elem);
     }
     free(Top);
 }
