@@ -1,6 +1,6 @@
 #include "iterator.h"
-#include "stack.h"
 #include "bst.h"
+#include "stack.h"
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
