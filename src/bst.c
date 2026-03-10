@@ -177,3 +177,8 @@ void bstPostorder(BST* tree)
     printf("Postorder\n");
     postorderRecursive(tree->root);
 }
+
+int main()
+{
+    return 0;
+}
