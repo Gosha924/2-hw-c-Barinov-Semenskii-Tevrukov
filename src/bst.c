@@ -248,7 +248,28 @@ int bstMax(BST* tree)
     return current->key;
 }
 
-int main()
+int nodeKthMin(Node* node, int* k)
 {
+    if (node != NULL) {
+        int key = nodeKthMin(node->left, k);
+        if (*k == 0) {
+            return key;
+        }
+        *k -= 1;
+        if (*k == 0) {
+            return node->key;
+        }
+        return nodeKthMin(node->right, k);
+    }
     return 0;
+
+}
+
+int bstKthMin(BST* tree, int k)
+{
+    if (k > bstSize(tree) || k <= 0) {
+        printf("Value error\n");
+        abort();
+    }
+    return nodeKthMin(tree->root, &k);
 }
