@@ -1,5 +1,5 @@
-#include "bst.h"
 #include "stack.h"
+#include "bst.h"
 #include <stdlib.h>
 
 stack* stackCreate()
