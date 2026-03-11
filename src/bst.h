@@ -34,3 +34,4 @@ int bstMin(BST* tree);
 int bstMax(BST* tree);
 
 //.....
+int bstKthMin(BST* tree, int k);
