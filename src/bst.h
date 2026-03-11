@@ -28,9 +28,9 @@ void postorderRecursive(Node* root);
 void bstPostorder(BST* tree);
 
 // задача С
-/* int bstHeight(BST* tree);
+int bstHeight(BST* tree);
 int bstSize(BST* tree);
 int bstMin(BST* tree);
 int bstMax(BST* tree);
-*/
+
 //.....

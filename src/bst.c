@@ -178,6 +178,76 @@ void bstPostorder(BST* tree)
     postorderRecursive(tree->root);
 }
 
+// task C
+
+int nodeHeight(Node* node)
+{
+    if (node == NULL) {
+        return 0;
+    }
+
+    int leftHeight = nodeHeight(node->left);
+    int rightHeight = nodeHeight(node->right);
+
+    if (leftHeight > rightHeight) {
+        return leftHeight + 1;
+    }
+    return rightHeight + 1;
+}
+
+int bstHeight(BST* tree)
+{ // всп функция
+    if (tree == NULL || tree->root == NULL) {
+        return 0;
+    }
+    return nodeHeight(tree->root);
+}
+
+int nodeSize(Node* node)
+{
+    if (node == NULL) {
+        return 0;
+    }
+
+    return 1 + nodeSize(node->right) + nodeSize(node->left);
+}
+
+int bstSize(BST* tree)
+{
+    if (tree == NULL || tree->root == NULL) {
+        return 0;
+    }
+    return nodeSize(tree->root);
+}
+
+int bstMin(BST* tree)
+{
+    if (tree == NULL || tree->root == NULL) {
+        return -1;
+    }
+
+    Node* current = tree->root;
+
+    while (current->left != NULL) {
+        current = current->left;
+    }
+    return current->key;
+}
+
+int bstMax(BST* tree)
+{
+    if (tree == NULL || tree->root == NULL) {
+        return -1;
+    }
+
+    Node* current = tree->root;
+
+    while (current->right != NULL) {
+        current = current->right;
+    }
+    return current->key;
+}
+
 int main()
 {
     return 0;
