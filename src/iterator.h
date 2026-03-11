@@ -10,4 +10,3 @@ Iterator* iteratorInit(BST* tree);
 bool iteratorHasNext(Iterator* it);
 int iteratorNext(Iterator* it);
 void iteratorFree(Iterator* it);
-
