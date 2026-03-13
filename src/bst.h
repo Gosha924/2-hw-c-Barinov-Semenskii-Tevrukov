@@ -32,9 +32,9 @@ int bstHeight(BST* tree);
 int bstSize(BST* tree);
 int bstMin(BST* tree);
 int bstMax(BST* tree);
-*/
+* /
 
-// задача D
-void bstDelete(BST* tree, int value);
+    // задача D
+    void bstDelete(BST* tree, int value);
 
 //.....
