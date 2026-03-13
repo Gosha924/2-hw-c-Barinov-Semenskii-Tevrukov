@@ -28,11 +28,18 @@ void postorderRecursive(Node* root);
 void bstPostorder(BST* tree);
 
 // задача С
-/* int bstHeight(BST* tree);
+int bstHeight(BST* tree);
 int bstSize(BST* tree);
 int bstMin(BST* tree);
 int bstMax(BST* tree);
-*/
+
+// задача D
+void bstDelete(BST* tree, int value);
+
+// задача E
+void insertAllNodes(BST* newBST, Node* root);
+BST* bstMerge(BST* tree1, BST* tree2);
+
 //.....
 
 // Задача F

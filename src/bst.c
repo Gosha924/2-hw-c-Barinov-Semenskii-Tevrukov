@@ -201,4 +201,170 @@ bool bstIsValid(BST* tree)
     }
     Node* prev = NULL;
     return check(tree->root, &prev);
+  
+void bstDelete(BST* tree, int value)
+{
+    if (tree == NULL || tree->root == NULL) {
+        printf("Tree is empty\n");
+        return;
+    }
+
+    Node* current = tree->root;
+    Node* parent = NULL;
+    bool found = false;
+
+    while (current != NULL) {
+        if (value < current->key) {
+            parent = current;
+            current = current->left;
+        } else if (value > current->key) {
+            parent = current;
+            current = current->right;
+        } else {
+            found = true;
+            break;
+        }
+    }
+
+    if (!found) {
+        printf("Value not found\n");
+        return;
+    }
+
+    if (current->left == NULL && current->right == NULL) {
+        if (parent == NULL) {
+            tree->root = NULL;
+        } else if (parent->left == current) {
+            parent->left = NULL;
+        } else {
+            parent->right = NULL;
+        }
+        free(current);
+        tree->size--;
+    } else if (current->left == NULL || current->right == NULL) {
+        Node* child = (current->left != NULL) ? current->left : current->right;
+
+        if (parent == NULL) {
+            tree->root = child;
+        } else if (parent->left == current) {
+            parent->left = child;
+        } else {
+            parent->right = child;
+        }
+        free(current);
+        tree->size--;
+    } else {
+        Node* successorParent = NULL;
+        Node* successor = current->right;
+
+        while (successor->left != NULL) {
+            successorParent = successor;
+            successor = successor->left;
+        }
+
+        current->key = successor->key;
+
+        if (successorParent == NULL) {
+            current->right = successor->right;
+        } else {
+            successorParent->left = successor->right;
+        }
+
+        free(successor);
+        tree->size--;
+    }
+}
+// task C
+
+int nodeHeight(Node* node)
+{
+    if (node == NULL) {
+        return 0;
+    }
+
+    int leftHeight = nodeHeight(node->left);
+    int rightHeight = nodeHeight(node->right);
+
+    if (leftHeight > rightHeight) {
+        return leftHeight + 1;
+    }
+    return rightHeight + 1;
+}
+
+int bstHeight(BST* tree)
+{ // всп функция
+    if (tree == NULL || tree->root == NULL) {
+        return 0;
+    }
+    return nodeHeight(tree->root);
+}
+
+int nodeSize(Node* node)
+{
+    if (node == NULL) {
+        return 0;
+    }
+
+    return 1 + nodeSize(node->right) + nodeSize(node->left);
+}
+
+int bstSize(BST* tree)
+{
+    if (tree == NULL || tree->root == NULL) {
+        return 0;
+    }
+    return nodeSize(tree->root);
+}
+
+int bstMin(BST* tree)
+{
+    if (tree == NULL || tree->root == NULL) {
+        return -1;
+    }
+
+    Node* current = tree->root;
+
+    while (current->left != NULL) {
+        current = current->left;
+    }
+    return current->key;
+}
+
+int bstMax(BST* tree)
+{
+    if (tree == NULL || tree->root == NULL) {
+        return -1;
+    }
+
+    Node* current = tree->root;
+
+    while (current->right != NULL) {
+        current = current->right;
+    }
+    return current->key;
+}
+
+// task E
+void insertAllNodes(BST* newBST, Node* root)
+{
+    if (root == NULL) {
+        return;
+    }
+    bstInsert(newBST, root->key);
+    insertAllNodes(newBST, root->left);
+    insertAllNodes(newBST, root->right);
+}
+
+BST* bstMerge(BST* tree1, BST* tree2)
+{
+    BST* newBST = createBST();
+    if (newBST != NULL) {
+        if (tree1 != NULL) {
+            insertAllNodes(newBST, tree1->root);
+        }
+        if (tree2 != NULL) {
+            insertAllNodes(newBST, tree2->root);
+        }
+    }
+    return newBST;
 }
