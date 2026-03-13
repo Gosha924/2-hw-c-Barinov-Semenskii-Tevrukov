@@ -329,7 +329,6 @@ void insertAllNodes(BST* newBST, Node* root)
     bstInsert(newBST, root->key);
     insertAllNodes(newBST, root->left);
     insertAllNodes(newBST, root->right);
-
 }
 
 BST* bstMerge(BST* tree1, BST* tree2)

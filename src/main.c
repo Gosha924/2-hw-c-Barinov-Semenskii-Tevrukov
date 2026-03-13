@@ -14,7 +14,7 @@ int main()
     bstInsert(tree2, 2);
 
     BST* newBST = bstMerge(tree1, tree2);
-    
+
     printf("\n");
     bstInorder(tree1);
     bstPostorder(tree1);
@@ -27,8 +27,6 @@ int main()
     bstInorder(newBST);
     bstPostorder(newBST);
     bstPreorder(newBST);
-
-    
 
     bstFree(tree1);
     bstFree(tree2);
