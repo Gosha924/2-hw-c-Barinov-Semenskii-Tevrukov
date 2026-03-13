@@ -201,7 +201,8 @@ bool bstIsValid(BST* tree)
     }
     Node* prev = NULL;
     return check(tree->root, &prev);
-  
+}
+
 void bstDelete(BST* tree, int value)
 {
     if (tree == NULL || tree->root == NULL) {
