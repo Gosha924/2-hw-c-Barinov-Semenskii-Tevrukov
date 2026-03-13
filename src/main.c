@@ -3,6 +3,11 @@
 
 int main()
 {
+    BST* tree = createBST();
+
+    bool isValud = bstIsValid(tree);
+    printf("%d\n", isValud);
+    bstFree(tree);
     BST* tree1 = createBST();
     bstInsert(tree1, 5);
     bstInsert(tree1, 3);

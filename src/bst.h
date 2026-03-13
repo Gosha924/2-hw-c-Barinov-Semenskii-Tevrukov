@@ -41,3 +41,7 @@ void insertAllNodes(BST* newBST, Node* root);
 BST* bstMerge(BST* tree1, BST* tree2);
 
 //.....
+
+// Задача F
+bool check(Node* root, Node** prev);
+bool bstIsValid(BST* tree);
