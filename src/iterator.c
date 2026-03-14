@@ -7,6 +7,9 @@
 
 Iterator* iteratorInit(BST* tree)
 {
+    if (tree == NULL || tree->root == NULL) {
+        return NULL;
+    }
     Iterator* it = malloc(sizeof(Iterator));
     it->Top = stackCreate();
     Node* node = tree->root;
